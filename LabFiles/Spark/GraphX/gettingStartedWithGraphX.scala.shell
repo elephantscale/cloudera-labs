@@ -1,0 +1,38 @@
+import org.apache.spark.graphx._
+
+val entities =
+sc.parallelize(Array((0L, ("AceCo", 0)), (1L, ("C1", 11)), (2L, ("C2", 22)),
+                       (3L, ("S1", -31)), (4L, ("S2", -42))))
+                       
+val relationships =
+  sc.parallelize(Array(Edge(1L, 0L, "client"), Edge(2L, 0L, "client"),
+                       Edge(3L, 0L, "supplier"), Edge(4L, 0L, "supplier"),
+                       Edge(2L, 4L, "client")))
+                       
+val graph = Graph(entities, relationships)
+
+
+graph.vertices.toArray
+graph.edges.toArray
+ 
+graph.vertices.filter { case (id, (name, cashflow)) => name == "C1"}.count
+graph.vertices.filter { case (id, (name, cashflow)) => cashflow > 0}.count
+
+val rddPositiveCF = graph.vertices.filter { case (id, (name, cashflow)) => cashflow > 0}
+
+rddPositiveCF.foreach (println)
+
+val cashFlow = sc.accumulator(0.0)   
+
+rddPositiveCF.foreach ( f => cashFlow.add (f._2._2 ) )
+
+cashFlow
+   
+val facts =
+  graph.triplets.map(triplet =>
+    triplet.srcAttr._1 + 
+	" is the " + triplet.attr + 
+	" of " + triplet.dstAttr._1 + 
+	" contributing " + triplet.srcAttr._2 + " million(s) to AceCo's cash flow")
+   
+facts.collect.foreach(println)

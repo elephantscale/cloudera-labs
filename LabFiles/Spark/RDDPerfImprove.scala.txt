@@ -1,0 +1,62 @@
+val txnLog = "file:///home/cloudera/LabFiles/creditcard_txns.dat"
+val logRDD = sc.textFile(txnLog)
+
+val mappedRDD = logRDD.map(line => line.split(","))
+mappedRDD.foreach( line => print (line(5).toDouble.toInt + " "))
+
+def slowWorker (line: Array[String]): Boolean = {
+   Thread.sleep(40)
+   line(5).toDouble.toInt >= 500
+}
+
+val over500 = mappedRDD.filter(slowWorker(_))
+
+over500.toDebugString
+
+ over500.count()
+ 
+ over500.cache()
+ 
+ over500.count()
+ 
+ over500.toDebugString
+ 
+ over500.count()
+ 
+ over500.unpersist()
+ 
+ over500.count()
+ 
+ // Checkpointing
+ val checkpointDir = "file:///home/cloudera/Works/CHKPNT"
+sc.setCheckpointDir (checkpointDir)
+
+val between500and600 = over500.filter (line => line(5).toDouble.toInt < 600) 
+between500and600.toDebugString
+between500and600.checkpoint()
+between500and600.count()
+between500and600.toDebugString
+
+over500.toDebugString
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+

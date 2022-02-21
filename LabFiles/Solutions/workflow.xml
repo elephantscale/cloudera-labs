@@ -1,0 +1,19 @@
+<workflow-app name="OozieWorkflowWithPigAction" xmlns="uri:oozie:workflow:0.3">
+<start to="pigActionStart"/>
+ <action name="pigActionStart">
+ <pig>
+   <job-tracker>${jobTracker}</job-tracker>
+   <name-node>${nameNode}</name-node>
+   <prepare>
+     <delete path="${outputDir}"/>
+  </prepare>
+   <script>sampleScript.pig</script>
+ </pig>
+ <ok to="end"/>
+ <error to="killJobAction"/>
+ </action>
+<kill name="killJobAction">
+ <message>${wf:errorMessage(wf:lastErrorNode())}</message>
+</kill>
+<end name="end" />
+</workflow-app>

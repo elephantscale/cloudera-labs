@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>MapReduce JavaScript Demo :: Counting Words</title>
+<script src="mapreduce.js"></script>
+</head>
+<body>
+	<script>
+		function process() {
+			var text = document.getElementById("theText");
+			// Default: 
+			//	and you will know the truth and the truth will make you free
+
+			// We need text as an array
+			var data = [ text.value.trim() ];
+
+			/////////////////  Call to the framework /////////////////
+			var result = mapreduce(data, mapFunction, reduceFunction);
+			//////////////////////////////////////////////////////////
+
+			var r = '';
+			for ( var j = 0; j < result.length; j++) {
+				r += result[j].key + " :: " + result[j].count + '<br/>';
+			}
+
+			document.getElementById("result").innerHTML = r;
+		}
+		
+		var mapFunction = function(item, emit) {
+			var splitted = item.split(/\s+/g);
+			for (var word in splitted) {
+				emit(splitted[word], 1);
+			}
+		}
+		
+		var reduceFunction = function(key, values, emit) {
+            emit({
+                key : key,
+                count : values.length
+            });
+        }
+			
+	</script>
+
+	<textarea id="theText" rows="4" cols="50">and you will know the truth and the truth will make you free</textarea>
+	<br />
+	<input type="button" onclick='process()' value="Process it!" />
+	<p>
+	<div id="result" style="color: blue; font-size: small;"></div>
+</body>
+</html>

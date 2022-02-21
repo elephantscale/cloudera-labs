@@ -1,0 +1,21 @@
+import org.apache.spark.graphx._
+
+val graph = GraphLoader.edgeListFile(sc, "file:///home/cloudera/LabFiles/Spark/GraphX/documents_graph.txt")
+
+val ranks = graph.pageRank(0.001).vertices
+    
+ranks.toArray
+    
+val docs = sc.textFile("file:///home/cloudera/LabFiles/Spark/GraphX/doc_names.txt").map { 
+   line =>
+      val f = line.split("=");
+      (f(0).toLong, f(1))
+}
+ 
+docs.toArray
+
+val ranksOfDocs = docs.join(ranks).map {
+  case (id, (docName, docRank)) => (docRank, docName)
+}
+     
+ranksOfDocs.sortBy(_._1, false).foreach(println)
