@@ -1,4 +1,4 @@
-#Lab 3 - Hadoop Streaming MapReduce
+# Lab 3 - Hadoop Streaming MapReduce
 
 In this lab, we will learn how to create Hadoop Streaming MapReduce jobs. Hadoop Streaming MapReduce API allows languages other than Java (e.g. Perl, Ruby, Python, etc.) to be used in processing files stored on the HDFS.
 
@@ -44,7 +44,7 @@ The BASKERVILLES.txt file contains the The Hound of the Baskervilles novel by Ar
 
 
 
-18 ## Part 3 - Using Linux Tools to Imitate the Streaming MapReduce
+## Part 3 - Using Linux Tools to Imitate the Streaming MapReduce
 
 Before we proceed with Hadoop's Streaming MapReduce API steps, let's see how we can perform simple "map & reduce" operations using standard Linux tools. For example, let's see how we can count the number of characters, words and lines in the BASKERVILLES.txt file.
 
@@ -471,7 +471,27 @@ This command will import the regular expressions module.
 punctuations = '[",.?\'!;-]'
 ```
 
-This is the list of punctuation marks we will strip off of the end of every word. 6. Enter the following three line (use 8 spaces for indentation) under for word in lineOfWords:
+This is the list of punctuation marks we will strip off of the end of every word. 
+
+```python
+#!/usr/bin/env python
+import sys
+
+emitCount = 1
+punctuations = '[",.?\'!;-]'
+
+# Get lines from standard input
+for line in sys.stdin:
+    lineOfWords = line.strip().split()
+    for word in lineOfWords:
+        print '%s\t%s' % (word,emitCount)
+        
+# To test:
+# cat file.dat | ./mapper.py
+```
+
+6. Enter the following three line (use 8 spaces for indentation) under for word in lineOfWords:
+
 
 ```python
 word = word.lower() 
@@ -487,22 +507,25 @@ In the above code, we make every word in lowercase, strip off punctuation marks 
 The resulting code of mapper.py should look as follows (the added lines are shown in bold):
 
 ```python
-#!/usr/bin/env python 
-import sys 
+#!/usr/bin/env python
+import sys
 import re
 
-emitCount = 1 punctuations = '[",.?\'!;-]'
+emitCount = 1
+punctuations = '[",.?\'!;-]'
 
-# Get lines from standard input for line in sys.stdin:
-
-lineOfWords = line.strip().split() for word in lineOfWords:
-
-word = word.lower() word = re.sub(punctuations, '', word) if (len(word) == 0): continue print '%s\t%s' % (word,emitCount)
-
+# Get lines from standard input
+for line in sys.stdin:
+    lineOfWords = line.strip().split()
+    for word in lineOfWords:
+        word = word.lower() 
+        word = re.sub(punctuations, '', word) 
+        if (len(word) == 0): 
+            continue
+        print '%s\t%s' % (word,emitCount)
+        
 # To test:
-
-# cat file.dat | ./mapper.py # echo "list of words" | ./mapper.py
-
+# cat file.dat | ./mapper.py
 ```
 
 7. Save the mapper.py and exit vi 8. Repeat the command (in one line):
