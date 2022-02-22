@@ -92,6 +92,7 @@ hadoop fs -mkdir IN
 
 ```bash
 hadoop fs -put fMapReduceNums.dat IN/
+```
 
 you can do this by using the following HDFS commands:
 
@@ -369,7 +370,7 @@ ls -lh
 You should see the MapReduceLab.jar file created on the file system.
 
 
-``console
+```console
 
 -rw-rw-r-- 1 cloudera cloudera 4.2K Jun 25 12:26 MapReduceLab.jar
 ```
@@ -550,7 +551,7 @@ You should get the following confirmation of your command: Deleted OUT Now you c
 
 ## Part 10 - Cleaning Up and Ending the Working Session
 
-1. Enter the following command (don't forget /* at the end of the command!):
+1. Enter the following command (don't forget `/*` at the end of the command!):
 
 ```bash
 hadoop fs -rm -r -skipTrash /user/cloudera/*
