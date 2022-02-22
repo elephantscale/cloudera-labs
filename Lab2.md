@@ -16,7 +16,9 @@ All the steps in this lab will be performed in the /home/cloudera/Works director
 
 1. In the terminal window, type in the following command:
 
+```bash
 cd ~/Works
+```
 
 ## Part 3 - Getting Started with HDFS
 
@@ -69,6 +71,8 @@ hadoop fs -ls /
 
 You should see the following output of the top folder of HDFS (the timestamps and folder listing may differ in your case).
 
+```console
+
 Found 5 items drwxr-xr-x drwxr-xr-x drwxrwxrwx drwxr-xr-x drwxr-xr-x
 
 - hbase supergroup
@@ -82,6 +86,8 @@ Found 5 items drwxr-xr-x drwxr-xr-x drwxrwxrwx drwxr-xr-x drwxr-xr-x
 - hdfs supergroup
 
 0 2015-06-24 08:25 /hbase 0 2015-04-23 07:49 /solr 0 2015-06-23 18:46 /tmp 0 2015-06-23 18:46 /user 0 2015-04-23 07:47 /var
+
+```
 
 Note: These folders do not exist on the standard (local) File System even though names may be the same, e.g. /tmp 
 
@@ -105,7 +111,9 @@ hadoop fs -ls /user
 
 10 You should see the following output (some details in your output may differ):
 
-Found 6 items drwxr-xr-x drwxr-xr-x drwxr-xr-x drwxrwxrwx drwxrwxrwx drwxr-xr-x
+```console
+Found 6 items 
+drwxr-xr-x drwxr-xr-x drwxr-xr-x drwxrwxrwx drwxrwxrwx drwxr-xr-x
 
 - cloudera cloudera
 
@@ -120,6 +128,7 @@ Found 6 items drwxr-xr-x drwxr-xr-x drwxr-xr-x drwxrwxrwx drwxrwxrwx drwxr-xr-x
 - spark spark
 
 0 2015-06-24 11:41 /user/cloudera 0 2015-06-23 18:46 /user/hdfs 0 2015-04-23 07:48 /user/history 0 2015-04-23 07:48 /user/hive 0 2015-04-23 07:49 /user/oozie 0 2015-04-23 07:49 /user/spark
+```
 
 You are a legitimate tenant at the /user/cloudera location on HDFS, which is your home directory.
 
@@ -170,7 +179,7 @@ The file is there all right, size a bit too small for Hadoop, but it is OK for o
 hadoop fs -put usr_bin_dir.dat
 ```
 
-This is the simplest possible command that copies the usr_bin_dir.dat file from local file system to HDFS where it would be assigned the same usr_bin_dir.dat name. Note, that the file on the local system stays untouched.
+This is the simplest possible command that copies the `usr_bin_dir.dat` file from local file system to HDFS where it would be assigned the same `usr_bin_dir.dat` name. Note, that the file on the local system stays untouched.
 
 4. Enter the following command:
 
@@ -180,9 +189,12 @@ hadoop fs -ls
 
 You should see that your file has been successfully copied over to HDFS.
 
+```console
 Found 1 items -rw-r--r-- 1 cloudera cloudera
 
 81722 2015-06-24 11:47 usr_bin_dir.dat
+
+```
 
 The number 1 in front of the cloudera account name is the number of replicated copies of your file. Normally, in a production setup, you will see the number 3 instead of 1. In our labs, we are running in pseudo-distributed deployment mode which maintains only one replica of every file block on HDFS.
 
@@ -209,7 +221,6 @@ Found 2 items
 ```
 
 
-
 The `usr_bin_dir.dat` file was persisted on HDFS as files.
 
 Now let's see how to get file(s) back from HDFS to the local File System. This should be a two-way street, right?
@@ -229,10 +240,8 @@ You should get the files HDFS file (which is the replica of the usr_bin_dir.dat 
 2. Enter the following command:
 
 ```bash
-diff files
+diff files usr_bin_dir.dat
 ```
-
-usr_bin_dir.dat
 
 You should get no differences between the files (no output on your console).
 
@@ -246,7 +255,7 @@ It is always a good idea to have a way to partition your file system into separa
 hadoop fs -mkdir REPORT
 ```
 
-This command will create the REPORT folder under /user/cloudera/.
+This command will create the REPORT folder under `/user/cloudera/`.
 
 Now, let's see how you can put multiple files from the local File System to HDFS. 
 
@@ -258,7 +267,7 @@ hadoop fs -put usr_bin_dir.dat files REPORT
 
 
 
-This command will copy usr_bin_dir.dat and files files to the /user/cloudera/REPORT directory. You can verify the creation of the files using either command:
+This command will copy `usr_bin_dir.dat` and files files to the `/user/cloudera/REPORT directory`. You can verify the creation of the files using either command:
 
 ```bash
 hadoop fs -ls /user/cloudera/REPORT
@@ -290,7 +299,6 @@ Now if you run the hadoop fs -ls REPORT command, you will see that the files fil
 
 
 ```bash
-
 hadoop fs -ls -R
 ```
 

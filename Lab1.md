@@ -27,7 +27,7 @@ These steps will be referred to in subsequent labs as "Connect to the Lab Enviro
 
 After you have successfully logged in, you will be in the cloudera account's home directory. The current directory name (where you are on the system) is printed as part of the system prompt (currently it is /home/cloudera).
 
-Part 2 - Using the vi Editor
+## Part 2 - Using the vi Editor
 
 Throughout subsequent labs, you may be required to create new files or edit existing ones. You can use any editor that is installed on the Lab Server and you are familiar with. Below we provide a quick overview of the vi editor.
 
@@ -95,6 +95,4 @@ vi -R your_file.dat
 rm -f foobar
 ```
 
-This command will remove the foobar file from the file system without prompting for
-
-5 confirmation of your operation (the -f flag).
+This command will remove the foobar file from the file system without prompting for confirmation of your operation (the -f flag).
