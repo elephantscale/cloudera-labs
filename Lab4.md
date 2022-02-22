@@ -140,7 +140,7 @@ less -MN WordCountLab.java
 
 This command helps with bi-directional (down and up) scrolling of the source using the keyboard navigational arrow and PgUp and PgDown keys. The -MN flags will help with showing your viewing point location in the file and printing line numbers.
 
-The full source of the WordCountLab.java file is shown below.
+The full source of the [WordCountLab.java](./LabFiles/MapRduce/WordCountLab.java) file is shown below.
 
 ```java
 import java.io.IOException;

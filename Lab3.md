@@ -229,7 +229,7 @@ Next, we are going to demonstrate how to use other scripting languages in the St
 vi -R mapper.py
 ```
 
-You should see the following output:
+Here is thec ontents of teh file [mapper.py](./LabFiles/Streaming/mapper.py)
 
 ```python
 #!/usr/bin/env python
@@ -284,7 +284,7 @@ Now let's review the reducer.py file.
 vi -R reducer.py
 ```
 
-You should see the source of reducer.py.
+You should see the source of [reducer.py](./LabFiles/Streaming/reducer.py).
 
 ```python
 #!/usr/bin/env python
@@ -346,7 +346,9 @@ Let's now run the actual Streaming MapReduce job using our mapper.py and reducer
 
 ## Part 7 - Running the Streaming MapReduce Job
 
-The driver script is called streamingPython.sh. 1. Enter the following command:
+The driver script is called [streamingPython.sh](./LabFiles/Streaming/streamingPython.sh). 
+
+1. Enter the following command:
 
 ```bash
 vi -R streamingPython.sh
