@@ -42,13 +42,15 @@ Now, let's copy the MapReduce folder under /home/cloudera/LabFiles/ into our wor
 cp -r /home/cloudera/LabFiles/MapReduce/ .
 ```
 
-3. Enter the following command to change directory to /home/cloudera/Works/MapReduce:
+3. Enter the following command to change directory to `/home/cloudera/Works/MapReduce`:
 
+```bash
 cd MapReduce
+```
 
 The /home/cloudera/Works/MapReduce directory is going to be our working directory for this lab.
 
-Let's review the content of the input files fMapReduceNums.dat and fMapReduceWords.dat.
+Let's review the content of the input files `fMapReduceNums.dat` and `fMapReduceWords.dat`.
 
 4. Enter the following command:
 
@@ -367,7 +369,7 @@ This command uses the jar packaging utility that is shipped with Java to build t
 ls -lh
 ```
 
-You should see the MapReduceLab.jar file created on the file system.
+You should see the `MapReduceLab.jar` file created on the file system.
 
 
 ```console
@@ -463,7 +465,9 @@ Steps below only apply to the desktop deployment option of your Lab Server where
 
 In the job's output in your terminal, locate the link to your job tracker URL; look for a line that looks as follows:
 
+```console
 <timestamp>INFO mapreduce.Job: The url to track the job: http://quickstart.cloudera:8088/proxy/application_<jobid>/
+```
 
 1. Copy the URL into your browser (alternatively, you can also try to click the link in the terminal window with the Control key down).
 
@@ -481,7 +485,9 @@ You should see the following page:
 
 You would see the following (cut for space here) output.
 
+```console
 Map job called on object with id 277061496 on thread [main] to process [one] for key [0] Map job called on object with id 277061496 on thread [main] to process [two two] for key [4] Map job called on object with id 277061496 on thread [main] to process [three three three] for key [12] Map job called on object with id 277061496 on thread [main] to process [four four four four] for key [30] Map job called on object with id 277061496 on thread [main] to process [five five five five five] for key [50] Reduce job called on object with id 1610644915 on thread [main] to process values [11111] for key [five]; the sum is: 5 Reduce job called on object with id 1610644915 on thread [main] to process values [1111] for key [four]; the sum is: 4 Reduce job called on object with id 1610644915 on thread [main] to process values [1] for key [one]; the sum is: 1 Reduce job called on object with id 1610644915 on thread [main] to process values [111] for key [three]; the sum is: 3
+```
 
 Note that we have the Reduce job running adjacent to the Map job. This the optimization offered by the Combiner class (consult the source code of WordCountLab.java). That leaves little to do for our Reducer ...
 
@@ -489,18 +495,21 @@ The Combiner's role is to sort the output of the mapper processes and do some da
 
 Note: The log messages are printed by the following statements in the WordCountLab.java file:
 
+```java
 logger.info("====Map job called on object with id " + this.hashCode() + " on thread [" + getCurrenttName() + "] to process [" + line + "] for key [" + key.toString() + "]");
+```
 
 and
 
+```java
 logger.info("====Reduce job called on object with id " + this.hashCode() + " on thread [" + getCurrenttName() + "] to process values [" + sb.toString() + "] for key [" + key.toString() + "]; the sum is: " + sum);
+```
 
 There are several insights that can be derived from this output.
 
 Execution is done on the main thread indicating that each job is executed as a singlethreaded application (that's how the shared nothing design principle is achieved).
 
 The mapper and reduce jobs are most likely executed by different instances of the Map and Reduce classes with the MapReduce engine potentially trying to re-use the same JVM for multi-pass operations to achieve certain efficiencies depending on the Hadoop cluster setup and available computing capacities.
-
 
 
 5. Close the browser.
@@ -517,7 +526,7 @@ Let's create one of a typical problem and show how you can fix it.
 cd /home/cloudera/Works/MapReduce
 ```
 
-You should go back to the original /home/cloudera/Works/MapReduce working directory where you executed your MapReduce job.
+You should go back to the original `/home/cloudera/Works/MapReduce` working directory where you executed your MapReduce job.
 
 Re-execute your MapReduce job.
 
