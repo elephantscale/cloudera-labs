@@ -33,38 +33,15 @@ Note: The terminal window supports the folder and file name auto-completion feat
 For this lab, we will manually create a file with a simple structure (schema). It will have three fields: the first one will hold numeric values of type int, the second will be for text, and the last one will hold long values. The fields will be separated from each other by a Tab character. The contents of the file is as follows (don't forget to hit Tab as the field delimiter!):
 
 ```console
-1
-
-one
-
-100
-
-
-
- 2
-
-3
-
-4
-
-5
-
-6
-
-two three four five six
-
-200
-
-300
-
-400
-
-500
-
-600
+1	one	100
+2	two	200
+3	three	300
+4	four	400
+5	five	500
+6	six	600
 ```
 
-Note: Make sure that you hit Enter after the last record (which ends in 600). That way we can simulate an empty record when we perform dump of the file contents on console. The file will be named num_tab_chars.dat.
+Note: Make sure that you hit Enter after the last record (which ends in 600). That way we can simulate an empty record when we perform dump of the file contents on console. The file will be named `num_tab_chars.dat`.
 
 1. Create this file using the editor of your choice.
 
