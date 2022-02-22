@@ -96,3 +96,64 @@ rm -f foobar
 ```
 
 This command will remove the foobar file from the file system without prompting for confirmation of your operation (the -f flag).
+
+
+## Part 3 - Sundry Commands and Techniques
+
+The big thing to remember is that Unix / Linux commands, file and folder names are case-sensitive, such that directories foo and Foo are different and can peacefully coexist in the same parent folder.
+
+To view the contents of a file use the cat command, e.g. cat myfile.dat
+
+Before you do this, first check the size of the file using this command: ls -lh which can take the name of the file as an argument or issued without any arguments, in which case it will list details of all files and directories in the current directory.
+
+If the file is big, or you would just like browse through it, use the less command that takes the name of the file as an argument , e.g. less your_filename
+
+The less command help you navigate through the file back and forth by using the arrow and PgUp and PgDown keys; when you are done and wish to exist the browsing window, just enter q.
+
+The Linux terminal window supports the folder and file name auto-completion feature which allows you to type the initial part of the directory or file name and complete it by pressing the Tab key.
+
+Use the following short-cuts to quickly navigate along the single command line:
+
+
+ * Control-a: Moves the cursor to the start of the line.
+
+ * Cntrl-e:Moves the cursor to the end of the line.
+
+ * Cntrl-k: Deletes (kills) the line contents to the right of the cursor.
+
+ * Ctrl-u: Deletes the line contents to the left of cursor.
+
+# Part 4 - Troubleshooting Tips
+
+In some Lab Server deployment scenarios, you may not have certain functionality available preventing you from completing some lab steps.
+
+Here are some tips and workarounds to help you do your classwork.
+
+ * To start the Firefox browser from command line (as the cloudera user) in case the desktop short-cut does not work:
+
+```bash
+/usr/local/firefox/firefox &
+```
+
+• If you get a message that the Firefox browser is already running, but you do not have a way to bring it to the forefront (to activate it), use these commands to
+
+
+6 search for the firefox process running and then kill it :
+
+```bash
+ps -ef | grep -i firefox
+```
+
+The first number after the username (cloudera) is the process id of the dormant firefox process you need to kill, e.g.
+
+cloudera 6328 1 58 07:29 ?  00:00:02 firefox
+
+```bash
+kill -9 <firefox pid from ps command above, e.g. 6328>
+```
+
+Sometimes, after a long period of inactivity, certain services may lose inter-connectivity with their dependency services. You may see different types of error or warning messages that, essentially, indicate that your environment no longer functions properly. If this is the case, shut down all the services and terminals that you started and issue the reboot command:
+
+```bash
+reboot
+```
