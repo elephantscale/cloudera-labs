@@ -60,7 +60,7 @@ total 116272
 
 1. Enter the following command to start Grunt:
 
-``console
+```console
 pig
 ```
 
