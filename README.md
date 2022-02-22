@@ -12,5 +12,12 @@ Cloudera Labs
  8. [Lab 8](./Lab8.md)
  9. [Lab 9](./Lab9.md)
  10. [Lab 10](./Lab10.md)
+ 11. [Lab 11](./Lab11.md)
 
+
+## How to clone
+
+```bash
+git clone https://github.com/elephantscale/cloudera-labs.git
+```
 
