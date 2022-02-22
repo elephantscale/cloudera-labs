@@ -331,7 +331,9 @@ The -S option is not supported.
 
 You should get back the list of existing tables in Hive:
 
+```console
 foo
+```
 
 If you issue this command without the -S flag (silent mode), you will get some additional information.
 
@@ -355,7 +357,7 @@ Let's see how to use a Hive script.
 
 5. Using a text editor of your choice, create a text file with the following content; name the file myHiveScript.q
 
-``sql
+```sql
 DROP TABLE foo;
 ```
 
