@@ -356,6 +356,7 @@ You should get the message about successful deletion of our table:
 OK Time taken: 4.152 seconds
 
 Confirm deletion of all data related to the tblFilesInfo table from the Hive's warehouse folder.
+```
 
 2. Enter the following command:
 
