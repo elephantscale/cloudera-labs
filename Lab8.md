@@ -147,7 +147,7 @@ No problem.
 
 
 
-63 10. Enter the following command:
+10. Enter the following command:
 
 ```pig
 sorted_by_amount = ORDER report BY $1 DESC;
@@ -156,7 +156,7 @@ sorted_by_amount = ORDER report BY $1 DESC;
 11. Enter:
 
 ```pig
-dump report;
+dump sorted_by_amount;
 ```
 
 The dump operation will show that the task has been accomplished with flying colors and with minimum effort on our part.
