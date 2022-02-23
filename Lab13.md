@@ -159,7 +159,6 @@ Note: The MySQL JDBC connector of sqoop uses the default MySQL listener port of 
 ```console
 ... --connect jdbc:mysql://localhost:3306/LABDB
 ```
-```
 
 ## Part 6 - Data Import with sqoop
 
