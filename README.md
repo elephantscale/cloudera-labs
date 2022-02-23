@@ -13,6 +13,7 @@ Cloudera Labs
  9. [Lab 9](./Lab9.md)
  10. [Lab 10](./Lab10.md)
  11. [Lab 11](./Lab11.md)
+ 11. [Lab 12](./Lab12.md)
 
 
 ## How to clone
