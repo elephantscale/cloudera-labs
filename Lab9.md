@@ -408,7 +408,7 @@ FAILED: SemanticException [Error 10001]: Table not found foo
 
 
 
-73 You can also confirm deletion of the table by running this command (which should return nothing):
+You can also confirm deletion of the table by running this command (which should return nothing):
 
 ```bash
 hive -S -e "SHOW TABLES;"
@@ -418,6 +418,7 @@ hive -S -e "SHOW TABLES;"
 
 ```bash
 hadoop fs -ls -R /user/hive/warehouse
+```
 
 The command should return nothing as, after dropping the table, Hive also removed any meta information about it.
 
