@@ -264,7 +264,7 @@ You should get the `hive>` command prompt. Subsequent commands are executed at t
 
 3. Enter the following command line by line submitting each line with Enter:
 
-``sql
+```sql
 CREATE TABLE hiveEMPS (empid INT, first_name STRING, last_name STRING, hire_date TIMESTAMP, job_cat INT, salary FLOAT)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE LOCATION '/user/cloudera/EMPS/';
 ```
