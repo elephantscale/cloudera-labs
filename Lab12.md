@@ -16,7 +16,9 @@ All the steps in this lab will be performed in the /home/cloudera/Works director
 
 1. In the terminal window, type in the following command:
 
+```bash
 cd ~/Works
+```
 
 ## Part 3 - Starting the Services
 
