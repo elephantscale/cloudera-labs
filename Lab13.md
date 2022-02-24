@@ -507,17 +507,21 @@ You should be dropped at the local system prompt.
 
 5. Enter the following command at the local system prompt:
 
+```bash
 sqoop export --connect jdbc:mysql://localhost/LABDB \
 
 --table EMPS_SHORT \
 
 --export-dir /user/cloudera/TO_EXPORT --username root -P
+```
 
 6. Provide cloudera for password, when prompted.
 
 When the process completes, you should see the following output (abridged for space):
 
+```console
 ...INFO mapreduce.ExportJobBase: Exported 10 records.
+```
 
 Let's confirm the results of the export operation.
 
@@ -530,14 +534,15 @@ sqoop eval --connect jdbc:mysql://localhost/LABDB -e 'SELECT * FROM EMPS_SHORT;'
 You should see the following output:
 
 ```console
---------------------------------------------------------------------------| id | FIRST_NAME | LAST_NAME | JOB_CAT |
-
---------------------------------------------------------------------------| 9 | Mohamad | Dahl | 8 | | 10 | Bob | Stern | 6 | | 1 | Joe | Doe | 7 | | 2 | Susan | Boghart | 9 | | 3 | Alim | Khan | 7 | | 4 | Rose | Dale | 6 | | 5 | Bill | Stahl | 6 | | 6 | Kyle | Moore | 7 | | 7 | Liz | Lee | 9 | | 8 | Mark | Wojzakhowski | 7 |
+--------------------------------------------------------------------------| 
+id | FIRST_NAME | LAST_NAME | JOB_CAT |
+--------------------------------------------------------------------------|
+ 9 | Mohamad | Dahl | 8 | | 10 | Bob | Stern | 6 | | 1 | Joe | Doe | 7 | | 2 | Susan | Boghart | 9 | | 3 | Alim | Khan | 7 | | 4 | Rose | Dale | 6 | | 5 | Bill | Stahl | 6 | | 6 | Kyle | Moore | 7 | | 7 | Liz | Lee | 9 | | 8 | Mark | Wojzakhowski | 7 |
 
 ---------------------------------------------------------------------------
 ```
 
-These are the records from the /user/cloudera/TO_EXPORT/part-m-00000 file. We are almost done in this lab.
+These are the records from the `/user/cloudera/TO_EXPORT/part-m-00000` file. We are almost done in this lab.
 
 
 
