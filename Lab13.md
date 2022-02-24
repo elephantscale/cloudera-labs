@@ -362,7 +362,7 @@ E = LOAD '/user/cloudera/EMPS/part-m-00000' USING PigStorage (',') AS (id:int, f
 
 3. Enter the following command:
 
-``pig
+```pig
 DUMP E;
 ```
 
