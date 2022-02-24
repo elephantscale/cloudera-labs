@@ -297,7 +297,7 @@ SELECT * FROM hiveEmps;
 
 You should see the content matching the content of MySQL's EMPS table and /user/cloudera/EMPS/part-m-00000 file in HDFS:
 
-``console
+```console
 OK 
 
 1 Joe Doe 2008-11-29 00:00:00 7 45000.0
@@ -591,9 +591,9 @@ We also need to delete MySQL tables we created in this lab.
 
 7. Enter the following command and provide cloudera for password, when prompted:
 
-mysql LABDB
-
--u root -p
+```bash
+mysql LABDB -u root -p
+```
 
 
 
